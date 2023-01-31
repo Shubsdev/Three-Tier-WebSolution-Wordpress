@@ -32,3 +32,18 @@ Type lsblk to view newly created partition.
 
 
 <img width="618" alt="image" src="https://user-images.githubusercontent.com/102925329/215862667-e42edea7-7480-4870-805f-a37238d060f2.png">
+
+
+<img width="617" alt="image" src="https://user-images.githubusercontent.com/102925329/215871112-c878ae82-1b88-46eb-b5bb-e78c1c7c9fef.png">
+
+
+<img width="606" alt="image" src="https://user-images.githubusercontent.com/102925329/215872515-78028685-1ddf-4b15-adc9-7bf0607d17ea.png">
+
+
+<img width="615" alt="image" src="https://user-images.githubusercontent.com/102925329/215873136-e241c43f-a267-401c-91bf-01a5c0fe7346.png">
+
+
+<img width="509" alt="image" src="https://user-images.githubusercontent.com/102925329/215875144-0c56bc55-c770-4305-baf1-19e08e86504a.png">
+
+
+<img width="566" alt="image" src="https://user-images.githubusercontent.com/102925329/215879409-f463d7a0-4f9e-4ba8-bda4-e5df66953de1.png">
