@@ -29,3 +29,6 @@ Type lsblk to view newly created partition.
 
 
 <img width="616" alt="image" src="https://user-images.githubusercontent.com/102925329/215859048-4789aa98-56b3-4850-a98f-f600e51243f8.png">
+
+
+<img width="618" alt="image" src="https://user-images.githubusercontent.com/102925329/215862667-e42edea7-7480-4870-805f-a37238d060f2.png">
