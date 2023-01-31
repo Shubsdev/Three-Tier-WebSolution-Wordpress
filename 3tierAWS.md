@@ -18,3 +18,14 @@ A prompt pops up, type n to create new partition, enter no of partition(1), hex 
 Repeat this process for the other remaining block devices.
 
 Type lsblk to view newly created partition.
+
+<img width="543" alt="image" src="https://user-images.githubusercontent.com/102925329/215853016-024d84ee-0c8b-4a99-9409-03fe1ebf715f.png">
+
+
+
+<img width="613" alt="image" src="https://user-images.githubusercontent.com/102925329/215858335-270b7033-c1d9-4eec-b236-edc1aa12bfc9.png">
+
+
+
+
+<img width="616" alt="image" src="https://user-images.githubusercontent.com/102925329/215859048-4789aa98-56b3-4850-a98f-f600e51243f8.png">
