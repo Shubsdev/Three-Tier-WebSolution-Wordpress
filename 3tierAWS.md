@@ -11,7 +11,9 @@ Open up the Linux terminal to begin configuration of the instance. Use lsblk com
 
 Use df -h command to see all mounts and free space on your server
 
-Use gdisk utility to create a single partition on each of the 3 disks sudo gdisk /dev/xvdf
+Use gdisk utility to create a single partition on each of the 3 disks 
+
+    sudo gdisk /dev/xvdf
 
 A prompt pops up, type n to create new partition, enter no of partition(1), hex code is 8e00, p to view partition and w to save newly created partition.
 
@@ -21,14 +23,41 @@ Type lsblk to view newly created partition.
 
 <img width="543" alt="image" src="https://user-images.githubusercontent.com/102925329/215853016-024d84ee-0c8b-4a99-9409-03fe1ebf715f.png">
 
+Install lvm2 package by typing: 
 
+    sudo yum install lvm2. 
+ Run sudo lvmdiskscan command to check for available partitions.
+ 
+Create physical volume to be used by lvm by using the pvcreate command:
+
+    sudo pvcreate /dev/xvdf1
+    sudo pvcreate /dev/xvdg1
+    sudo pvcreate /dev/xvdh1
+
+
+To check if the PV have been created type: sudo pvs
+
+Next, Create the volume group and name it webdata-vg: 
+
+    sudo vgcreate webdata-vg /dev/xvdf1 /dev/xvdg1 /dev/xvdh1
 
 <img width="613" alt="image" src="https://user-images.githubusercontent.com/102925329/215858335-270b7033-c1d9-4eec-b236-edc1aa12bfc9.png">
 
+View newly created volume group type: sudo vgs
 
+Create 2 logical volumes using lvcreate utility. Name them: apps-lv for storing data for the Website and logs-lv for storing data for logs.
 
+    sudo lvcreate -n apps-lv -L 14G webdata-vg
+    sudo lvcreate -n logs-lv -L 14G webdata-vg
 
 <img width="616" alt="image" src="https://user-images.githubusercontent.com/102925329/215859048-4789aa98-56b3-4850-a98f-f600e51243f8.png">
+
+Verify Logical Volume has been created successfully by running: sudo lvs
+
+Next, format the logical volumes with ext4 filesystem:
+ 
+    sudo mkfs -t ext4 /dev/webdata-vg/apps-lv
+    sudo mkfs -t ext4 /dev/webdata-vg/logs-lv
 
 
 <img width="618" alt="image" src="https://user-images.githubusercontent.com/102925329/215862667-e42edea7-7480-4870-805f-a37238d060f2.png">
