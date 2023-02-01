@@ -59,6 +59,24 @@ Next, format the logical volumes with ext4 filesystem:
     sudo mkfs -t ext4 /dev/webdata-vg/apps-lv
     sudo mkfs -t ext4 /dev/webdata-vg/logs-lv
 
+Next, create mount points for logical volumes. 
+Create /var/www/html directory to store website files: sudo mkdir -p /var/www/html 
+
+and mount /var/www/html on Mount /var/www/html on apps-lv logical volume : sudo mount /dev/webdata-vg/apps-lv /var/www/html/
+
+Then create /home/recovery/logs to store backup of log data: sudo mkdir -p /home/recovery/logs
+
+Use rsync utility to backup all the files in the log directory /var/log into /home/recovery/logs (It is important to backup all data on the /var/log directory because all the data will be deleted during the mount process) Type the following command: sudo rsync -av /var/log/. /home/recovery/logs/
+
+Mount /var/log on logs-lv logical volume: sudo mount /dev/webdata-vg/logs-lv /var/log
+
+Finally, restore deleted log files back into /var/log directory: sudo rsync -av /home/recovery/logs/. /var/log
+
+Next, update /etc/fstab file so that the mount configuration will persist after restart of the server.
+
+The UUID of the device will be used to update the /etc/fstab file to get the UUID type: sudo blkid and copy the both the apps-vg and logs-vg UUID (Excluding the double quotes)
+
+Type sudo vi /etc/fstab to open editor and update using the UUID you copied.
 
 <img width="618" alt="image" src="https://user-images.githubusercontent.com/102925329/215862667-e42edea7-7480-4870-805f-a37238d060f2.png">
 
@@ -68,6 +86,12 @@ Next, format the logical volumes with ext4 filesystem:
 
 <img width="606" alt="image" src="https://user-images.githubusercontent.com/102925329/215872515-78028685-1ddf-4b15-adc9-7bf0607d17ea.png">
 
+Test the configuration and reload the daemon:
+      
+    sudo mount -a`
+    sudo systemctl daemon-reload
+
+Verify your setup by running:  df -h
 
 <img width="615" alt="image" src="https://user-images.githubusercontent.com/102925329/215873136-e241c43f-a267-401c-91bf-01a5c0fe7346.png">
 
