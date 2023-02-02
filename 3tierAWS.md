@@ -155,7 +155,17 @@ Verify that the service is up and running by using sudo systemctl status mysqld.
     
 <img width="615" alt="image" src="https://user-images.githubusercontent.com/102925329/215873136-e241c43f-a267-401c-91bf-01a5c0fe7346.png">
 
+### Step 5 — Configure DB to work with WordPress
 
+Configure DB to work with Wordpress with the code below.
+
+    sudo mysql
+    CREATE DATABASE wordpress;
+    CREATE USER `myuser`@`<Web-Server-Private-IP-Address>` IDENTIFIED BY 'mypass';
+    GRANT ALL ON wordpress.* TO 'myuser'@'<Web-Server-Private-IP-Address>';
+    FLUSH PRIVILEGES;
+    SHOW DATABASES;
+    exit
 <img width="509" alt="image" src="https://user-images.githubusercontent.com/102925329/215875144-0c56bc55-c770-4305-baf1-19e08e86504a.png">
 
 
