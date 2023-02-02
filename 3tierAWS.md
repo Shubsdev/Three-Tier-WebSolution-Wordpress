@@ -93,6 +93,24 @@ Test the configuration and reload the daemon:
 
 Verify your setup by running:  df -h
 
+### Part 2 — Prepare the Database Server
+
+Launch a second RedHat EC2 instance and name it DB Server
+
+Repeat the same steps as for the Web Server, but instead of apps-lv create db-lv and mount it to /db directory instead of /var/www/html/.
+
+### Part 3 -Install WordPress and connect it to a remote MySQL database server.
+
+Update the repository: sudo yum -y update
+
+Install wget, Apache and it’s dependencies: 
+    
+    sudo yum -y install wget httpd php php-mysqlnd php-fpm php-json
+
+Start Apache
+
+    sudo systemctl enable httpd
+    sudo systemctl start httpd
 <img width="615" alt="image" src="https://user-images.githubusercontent.com/102925329/215873136-e241c43f-a267-401c-91bf-01a5c0fe7346.png">
 
 
